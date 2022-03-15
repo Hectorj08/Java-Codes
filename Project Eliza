@@ -1,0 +1,71 @@
+import java.util.Scanner;
+// https://youtu.be/kIuSq22iOMw
+public class ProjectEliza {
+	
+	
+	public static void main(String[] args) {
+	 Scanner input = new Scanner(System.in);
+		String user = "";
+		String sentence = "";
+		PromptBank pb = new PromptBank();
+		boolean restart = true;
+		
+		
+		
+		System.out.println("Eliza: Hello my name is Eliza. What is your name?");
+		System.out.print("User: ");
+		user = input.next();
+	
+		
+		System.out.println("Eliza: Hello "+ user+ ". Tell me what is on your mind in 1 sentence.");
+		
+		while(restart) {
+		
+			while(!sentence.equalsIgnoreCase("Exit")) {
+			
+			System.out.print("User: ");
+			input.next();
+			sentence = input.nextLine();
+			
+			pb.populateStatementsArray(pb.getFirstWord(sentence), pb.getLastWord(sentence));
+			pb.populateQuestionsArray(pb.getFirstWord(sentence), pb.getLastWord(sentence));
+		
+		if(sentence.charAt(sentence.length()-1)=='?') {
+			System.out.println("Eliza: "+pb.getRandomQuestionTrunk());
+		}
+		else if(sentence.charAt(sentence.length()-1)=='!') {
+			System.out.println("Eliza: Wow! Dramatic! "+ pb.getRandomStatementTrunk());
+		}
+		else if (sentence.charAt(sentence.length()-1)=='.'){
+			System.out.println("Eliza: "+pb.getRandomStatementTrunk());
+		}
+		else {
+			System.out.println("Eliza: "+pb.getRandomStatementTrunk());
+		}
+			
+			
+		if(sentence.equalsIgnoreCase("Exit")) {
+		System.out.println("Eliza: Do you want to run the session again? (yes/no)");
+		}
+		System.out.print("User: ");
+		
+		sentence = input.next();
+		sentence = input.next().toUpperCase();
+		
+		if(sentence.equalsIgnoreCase("YES")) {
+			restart = true;
+		}
+		if (sentence.equalsIgnoreCase("NO")){
+			System.out.println("Eliza: Goodbye until next time");
+			restart = !restart;
+		}
+		}
+		}	
+		
+		input.close();
+	}
+}
+	
+	
+	
+
