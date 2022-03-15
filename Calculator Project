@@ -1,0 +1,147 @@
+import java.util.Scanner;
+public class Main {
+
+	public static void main(String [] args) {
+	 Scanner input = new Scanner(System.in);
+	 String userSelection;
+	 String diffOpp = "";
+	 boolean restart = true;
+	      
+	      while(restart) {
+
+	     
+		      int n;
+		      double n1,radians;
+		      double result=0;
+		      
+		      System.out.println("Enter the calculator mode: Standard/Scientific?");
+		  	 userSelection = input.next();
+		  
+	      if (userSelection.equalsIgnoreCase("Standard")) {
+	         System.out.println("The calculator will operate in standard mode.");
+	         System.out.println("Enter '+' for addition, '-' for subtractions, '*' for multiplication, '/' for division");
+	         diffOpp = input.next();
+	      }
+	      else if (userSelection.equalsIgnoreCase("Scientific")) {
+	         System.out.println("The calculator will operate in scientific mode.");
+	         System.out.println("Enter '+' for addition, '-' for subtractions, '*' for multiplication, '/' for division, 'sin' for sin x, 'cos' for cos x, 'tan' for tan x:");
+	         diffOpp = input.next();
+	      }
+	      while (!userSelection.equals("Standard") && !userSelection.equals("Scientific")) {
+	         System.out.println("The input is invalid and re-prompt the user for the operation again.");
+	         System.out.println("Enter the calculator mode: Standard/Scientific?");
+	         userSelection = input.next();
+	      }
+	      
+	      while (!diffOpp.equals("+") && !diffOpp.equals("-") && !diffOpp.equals("*") && !diffOpp.equals("/") && !diffOpp.equals("sin") && !diffOpp.equals("cos") && !diffOpp.equals("tan")) {
+	    	  System.out.println("Invalid operator "+ diffOpp);
+	    	  if (userSelection.equals("Standard")) {
+	    	  System.out.println("Enter '+' for addition, '-' for subtractions, '*' for multiplication, '/' for division");
+	          diffOpp = input.next();
+	    	  }
+	          else if(userSelection.equals("Scientific")) {
+	        	  System.out.println("Enter '+' for addition, '-' for subtractions, '*' for multiplication, '/' for division, 'sin' for sin x, 'cos' for cos x, 'tan' for tan x:");
+	 	          diffOpp = input.next();
+	          }
+	      }
+	      
+	      
+	      if(userSelection.equalsIgnoreCase("Standard") || userSelection.equalsIgnoreCase("Scientific")) {
+	      }
+	      
+	       if (diffOpp.equalsIgnoreCase("+")) {
+	    	  System.out.println("How many numbers do you want to add?");
+	    	  n = input.nextInt();
+	    	  result=0;
+	    	  System.out.println("Enter "+n+" numbers");
+	    	  for(int i = 0; i < n;i++) {
+	    	  n1 = input.nextDouble();
+	    	  result += n1;
+	    	  }
+	    	  System.out.println("Result: " + result); 
+	      
+	      }
+	    
+	      else if (diffOpp.equalsIgnoreCase("-")) {
+	    	  System.out.println("How many numbers do you want to subtract?");
+	    	  n = input.nextInt();
+	    	  result=0;
+	    	  System.out.println("Enter "+n+" numbers");
+	    	  result = input.nextDouble();
+	    	  for(int i = 0; i<n-1;i++) {
+	    	  n1 = input.nextDouble();
+	    	  result = result - n1;
+	    	  }
+	    	  System.out.println("Result: " + result);
+	      }
+	      
+	      else if (diffOpp.equalsIgnoreCase("*")) {
+	    	  System.out.println("How many numbers do you want to multiply?");
+	    	  n = input.nextInt();
+	    	  result = 1;
+	    	  System.out.println("Enter "+n+" numbers");
+	    	  for(int i =0; i<n;i++) {
+	    	  n1 = input.nextDouble();
+	    	  result *= n1;
+	    	  }
+	    	  System.out.println("Result: " + result); 
+	      }
+	      
+	      else if (diffOpp.equalsIgnoreCase("/")) {
+	    	  System.out.println("How many numbers do you want to divide?");
+	    	  n = input.nextInt();
+	    	  result = 0;
+	    	  System.out.println("Enter "+n+" numbers");
+	    	  result = input.nextDouble();
+	    	  for(int i = 0;i<n-1;i++) {
+	    	  n1 = input.nextDouble();
+	    	  result = result / n1;
+	    	  }
+	    	  System.out.println("Result: " + result);
+	      }
+	      
+	      
+	      
+	     
+	      
+	      if (userSelection.equalsIgnoreCase("Scientific")) {
+	      }  
+	      if (diffOpp.equals("cos")) {
+	    	  System.out.println("Enter a number in radians to find the cosine");
+	    	  radians = input.nextDouble();
+	    	  result = Math.cos(radians);
+	    	  System.out.println("Result: " + result);
+	      }
+	      else if (diffOpp.equalsIgnoreCase("tan")) {
+	    	  System.out.println("Enter a number in radians to find the tangent");
+	    	  radians = input.nextDouble();
+	    	  result = Math.tan(radians);
+	    	  System.out.println("Result: " + result);
+	      }
+	     
+	      else if (diffOpp.equalsIgnoreCase("sin")) {
+	    	  System.out.println("Enter a number in radians to find the sine");
+	    	  radians = input.nextDouble();
+	    	  result = Math.sin(radians);
+	    	  System.out.println("Result: " + result);
+	      }
+	      
+	      
+	      System.out.println("Do you want to start over? (Y/N)");
+	  	    
+	  	    userSelection = input.next();
+	  	    
+	      if (userSelection.equalsIgnoreCase("Y")) {
+	    	  restart = true;
+	      }
+	      
+	      if (userSelection.equalsIgnoreCase("N")) {
+	    	  System.out.println("Goodbye");
+	    	  restart = !restart;
+	      } 
+	      }  
+	}
+	      
+}
+	 
+
